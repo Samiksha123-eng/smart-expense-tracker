@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://10.16.65.3:5000/api",
+  baseURL: "https://smart-expense-tracker-backend-kssy.onrender.com",
 });
 
 // Automatically attach JWT token to every request

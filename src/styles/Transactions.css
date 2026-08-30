@@ -1,0 +1,514 @@
+/* =========================================================
+   TRANSACTIONS PAGE
+========================================================= */
+
+.transactions-container {
+  min-height: 100vh;
+  width: 100%;
+
+  background: transparent;
+
+  padding: 35px;
+
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.transactions-title {
+  text-align: center;
+
+  color: var(--navy);
+
+  font-size: 32px;
+
+  margin-top: 10px;
+  margin-bottom: 25px;
+
+  font-weight: 700;
+}
+
+/* =========================================================
+   SEARCH BOX
+========================================================= */
+
+.search-box {
+  width: 100%;
+  max-width: 520px;
+
+  display: block;
+
+  margin: 0 auto 35px;
+
+  padding: 14px 18px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 14px;
+
+  outline: none;
+
+  font-size: 15px;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  color: var(--text);
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 5px 15px rgba(15, 23, 42, 0.05);
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+.search-box:hover {
+  border-color: var(--navy);
+}
+
+.search-box:focus {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.10),
+    0 8px 20px rgba(15, 23, 42, 0.08);
+
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   TRANSACTION GRID
+========================================================= */
+
+.transactions-list {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
+
+  gap: 25px;
+}
+
+/* =========================================================
+   TRANSACTION CARD
+========================================================= */
+
+.transaction-card {
+  background: rgba(255, 255, 255, 0.97);
+
+  border: 1px solid rgba(203, 213, 225, 0.7);
+
+  border-radius: 20px;
+
+  padding: 23px;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.08);
+
+  position: relative;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Top blue line */
+.transaction-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: var(--primary);
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition: transform 0.3s ease;
+}
+
+.transaction-card:hover::before {
+  transform: scaleX(1);
+}
+
+.transaction-card:hover {
+  transform: translateY(-7px);
+
+  border-color: rgba(37, 99, 235, 0.25);
+
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.15);
+}
+
+/* =========================================================
+   TOP
+========================================================= */
+
+.transaction-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 18px;
+}
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.transaction-icon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  background: #f1f5f9;
+
+  border-radius: 16px;
+
+  font-size: 29px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.transaction-card:hover .transaction-icon {
+  transform:
+    scale(1.1)
+    rotate(-4deg);
+
+  box-shadow:
+    0 6px 15px rgba(15, 23, 42, 0.10);
+}
+
+/* =========================================================
+   CATEGORY
+========================================================= */
+
+.transaction-category {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.transaction-category h3 {
+  color: var(--navy);
+
+  margin: 0 0 5px;
+
+  font-size: 19px;
+
+  word-break: break-word;
+}
+
+.transaction-category span {
+  color: var(--text-secondary);
+
+  font-size: 13px;
+}
+
+/* =========================================================
+   AMOUNT
+========================================================= */
+
+.transaction-amount {
+  color: var(--primary);
+
+  font-size: 24px;
+
+  font-weight: 700;
+
+  margin: 10px 0 18px;
+}
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.transaction-details {
+  padding-top: 13px;
+
+  border-top: 1px solid var(--border);
+}
+
+.transaction-details p {
+  color: var(--text-secondary);
+
+  margin: 9px 0;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+.transaction-details strong {
+  color: var(--text);
+}
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.transaction-actions {
+  display: flex;
+
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+.transaction-actions button {
+  flex: 1;
+
+  padding: 11px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+/* =========================================================
+   EDIT
+========================================================= */
+
+.edit-btn {
+  background: var(--warning);
+
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #d97706;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 5px 12px rgba(245, 158, 11, 0.25);
+}
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+.delete-btn {
+  background: var(--danger);
+
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 5px 12px rgba(220, 38, 38, 0.25);
+}
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.no-transactions {
+  max-width: 500px;
+
+  margin: 50px auto;
+
+  padding: 45px 25px;
+
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  border-radius: 20px;
+
+  box-shadow: var(--shadow);
+}
+
+.empty-icon {
+  font-size: 50px;
+
+  margin-bottom: 10px;
+
+  animation: emptyFloat 3s ease-in-out infinite;
+}
+
+.no-transactions h2 {
+  color: var(--navy);
+
+  margin-bottom: 8px;
+}
+
+.no-transactions p {
+  color: var(--text-secondary);
+
+  margin: 0;
+}
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-btn {
+  display: block;
+
+  margin: 40px auto 10px;
+
+  width: 250px;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: var(--radius);
+
+  background: var(--navy);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.back-btn:hover {
+  background: #000000;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 18px rgba(15, 23, 42, 0.20);
+}
+
+/* =========================================================
+   EMPTY ANIMATION
+========================================================= */
+
+@keyframes emptyFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .transactions-container {
+    padding: 30px 20px;
+  }
+
+  .transactions-list {
+    grid-template-columns:
+      repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 20px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .transactions-container {
+    padding: 25px 15px;
+  }
+
+  .transactions-title {
+    font-size: 27px;
+  }
+
+  .search-box {
+    margin-bottom: 25px;
+  }
+
+  .transactions-list {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .transaction-card {
+    padding: 20px;
+  }
+
+  .transaction-icon {
+    width: 50px;
+    height: 50px;
+
+    font-size: 25px;
+  }
+
+  .transaction-category h3 {
+    font-size: 17px;
+  }
+
+  .transaction-amount {
+    font-size: 21px;
+  }
+
+  .transaction-actions button {
+    padding: 11px 7px;
+  }
+
+  .back-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}

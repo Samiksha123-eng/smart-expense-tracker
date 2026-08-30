@@ -1,0 +1,513 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--text);
+}
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+
+  background: #ffffff;
+
+  /* Dark moving dots */
+  background-image: radial-gradient(
+    circle,
+    rgba(17, 24, 39, 0.28) 2px,
+    transparent 2px
+  );
+
+  background-size: 50px 50px;
+
+  animation: dotsMove 12s linear infinite;
+}
+
+/* =========================
+   DARK FLOATING SHAPES
+========================= */
+
+.login-container::before {
+  content: "";
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  top: -190px;
+  left: -150px;
+
+  border-radius: 50%;
+
+  background: #111827;
+  opacity: 0.12;
+
+  animation: blackFloat 6s ease-in-out infinite;
+}
+
+.login-container::after {
+  content: "";
+  position: absolute;
+
+  width: 360px;
+  height: 360px;
+
+  bottom: -170px;
+  right: -120px;
+
+  border-radius: 50%;
+
+  background: #0f172a;
+  opacity: 0.14;
+
+  animation: navyFloat 7s ease-in-out infinite;
+}
+
+/* =========================
+   LOGIN CARD
+========================= */
+
+.login-card {
+  width: 400px;
+
+  background: #ffffff;
+
+  padding: 35px;
+
+  border-radius: var(--radius);
+
+  box-shadow:
+    0 15px 40px rgba(15, 23, 42, 0.12);
+
+  position: relative;
+  z-index: 2;
+
+  animation: cardEntrance 0.8s ease-out;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 20px 45px rgba(15, 23, 42, 0.20);
+}
+
+/* =========================
+   LOGIN LOGO
+========================= */
+
+.login-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 10px;
+
+  animation: logoEntrance 0.9s ease-out;
+}
+
+.wallet-logo {
+  width: 85px;
+  height: 85px;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.wallet-logo:hover {
+  transform: scale(1.1) rotate(-4deg);
+
+  filter:
+    drop-shadow(
+      0 6px 10px rgba(15, 23, 42, 0.25)
+    );
+}
+
+/* =========================
+   LOGIN TITLE
+========================= */
+
+.login-title {
+  text-align: center;
+
+  color: var(--navy);
+
+  margin-bottom: 30px;
+
+  font-size: 30px;
+
+  animation: titlePop 0.8s ease-out;
+}
+
+/* =========================
+   LABELS
+========================= */
+
+.login-card label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--text);
+
+  font-weight: 600;
+
+  animation: labelSlide 0.8s ease-out;
+}
+
+/* =========================
+   INPUT FIELDS
+========================= */
+
+.login-input {
+  width: 100%;
+
+  padding: 14px;
+
+  margin-bottom: 20px;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  outline: none;
+
+  font-size: 15px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  color: var(--text);
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+/* Input Hover */
+.login-input:hover {
+  border-color: #111827;
+
+  transform: translateY(-1px);
+}
+
+/* Input Focus */
+.login-input:focus {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.10),
+    0 0 15px rgba(37, 99, 235, 0.18);
+
+  transform: translateY(-2px);
+}
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.login-btn {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: var(--radius);
+
+  background: var(--navy);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  position: relative;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Button Hover */
+.login-btn:hover {
+  background: #000000;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 18px rgba(15, 23, 42, 0.30);
+}
+
+/* Button Click */
+.login-btn:active {
+  transform: scale(0.97);
+}
+
+/* =========================
+   BUTTON SHINE
+========================= */
+
+.login-btn::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -100%;
+
+  width: 60%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+
+  transform: skewX(-25deg);
+}
+
+.login-btn:hover::before {
+  animation: buttonShine 0.8s ease;
+}
+
+/* =========================
+   REGISTER LINK
+========================= */
+
+.register-link {
+  margin-top: 20px;
+
+  text-align: center;
+
+  color: var(--text-secondary);
+
+  animation: fadeIn 1.3s ease;
+}
+
+.register-link span {
+  color: var(--navy);
+
+  cursor: pointer;
+
+  font-weight: bold;
+
+  display: inline-block;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.register-link span:hover {
+  color: #000000;
+
+  text-decoration: underline;
+
+  transform: translateX(4px);
+}
+
+/* =========================
+   CARD ENTRANCE
+========================= */
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================
+   TITLE POP
+========================= */
+
+@keyframes titlePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  70% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================
+   LABEL SLIDE
+========================= */
+
+@keyframes labelSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =========================
+   FADE
+========================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================
+   LOGO ENTRANCE
+========================= */
+
+@keyframes logoEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-15deg);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.1) rotate(3deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* =========================
+   BLACK CIRCLE FLOAT
+========================= */
+
+@keyframes blackFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(45px, 30px) scale(1.12);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* =========================
+   NAVY CIRCLE FLOAT
+========================= */
+
+@keyframes navyFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-40px, -30px) scale(1.10);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* =========================
+   MOVING DOTS
+========================= */
+
+@keyframes dotsMove {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 50px 50px;
+  }
+}
+
+/* =========================
+   BUTTON SHINE
+========================= */
+
+@keyframes buttonShine {
+  from {
+    left: -100%;
+  }
+
+  to {
+    left: 130%;
+  }
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 500px) {
+  .login-card {
+    width: 85%;
+    padding: 25px;
+  }
+
+  .login-title {
+    font-size: 26px;
+  }
+
+  .wallet-logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .login-container::before {
+    width: 280px;
+    height: 280px;
+  }
+
+  .login-container::after {
+    width: 250px;
+    height: 250px;
+  }
+}

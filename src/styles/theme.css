@@ -1,0 +1,637 @@
+/* =========================================================
+   SMART EXPENSE TRACKER - GLOBAL THEME
+   Full-page animated white + dark background
+========================================================= */
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --navy: #172554;
+  --dark: #111827;
+  --black: #000000;
+  --accent: #38bdf8;
+
+  --background: #ffffff;
+  --card: #ffffff;
+
+  --text: #0f172a;
+  --text-secondary: #64748b;
+  --border: #cbd5e1;
+
+  --success: #16a34a;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+
+  --radius: 16px;
+
+  --shadow:
+    0 10px 30px rgba(15, 23, 42, 0.10);
+}
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--text);
+}
+
+/* =========================================================
+   FULL PAGE CONTAINERS
+========================================================= */
+
+.login-container,
+.register-container,
+.forgot-container,
+.dashboard-container,
+.expense-container,
+.transactions-container,
+.analytics-container,
+.profile-container {
+  width: 100%;
+  min-height: 100vh;
+
+  position: relative;
+
+  background-color: #ffffff;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  isolation: isolate;
+
+  /* Moving dark dots */
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(15, 23, 42, 0.18) 1.5px,
+      transparent 1.5px
+    );
+
+  background-size: 48px 48px;
+
+  animation: backgroundDots 18s linear infinite;
+}
+
+/* =========================================================
+   DARK FLOATING SHAPES
+========================================================= */
+
+.login-container::before,
+.register-container::before,
+.forgot-container::before,
+.dashboard-container::before,
+.expense-container::before,
+.transactions-container::before,
+.analytics-container::before,
+.profile-container::before {
+  content: "";
+
+  position: fixed;
+
+  width: 420px;
+  height: 420px;
+
+  top: -210px;
+  left: -170px;
+
+  border-radius: 50%;
+
+  background: #111827;
+
+  opacity: 0.10;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  animation: floatingDarkCircle 8s ease-in-out infinite;
+}
+
+.login-container::after,
+.register-container::after,
+.forgot-container::after,
+.dashboard-container::after,
+.expense-container::after,
+.transactions-container::after,
+.analytics-container::after,
+.profile-container::after {
+  content: "";
+
+  position: fixed;
+
+  width: 380px;
+  height: 380px;
+
+  right: -170px;
+  bottom: -180px;
+
+  border-radius: 50%;
+
+  background: #0f172a;
+
+  opacity: 0.12;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  animation: floatingNavyCircle 9s ease-in-out infinite;
+}
+
+/* =========================================================
+   CONTENT MUST STAY ABOVE ANIMATION
+========================================================= */
+
+.login-container > *,
+.register-container > *,
+.forgot-container > *,
+.dashboard-container > *,
+.expense-container > *,
+.transactions-container > *,
+.analytics-container > *,
+.profile-container > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   WHITE CARDS
+========================================================= */
+
+.login-card,
+.register-card,
+.forgot-card,
+.transaction-card,
+.chart-card,
+.insight-card,
+.profile-card,
+.card,
+.transactions-section {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(203, 213, 225, 0.70);
+
+  box-shadow: var(--shadow);
+
+  backdrop-filter: blur(5px);
+}
+
+/* =========================================================
+   COMMON HEADINGS
+========================================================= */
+
+.login-title,
+.register-title,
+.forgot-title,
+.dashboard-title,
+.transactions-title,
+.analytics-title,
+.profile-title,
+.expense-title {
+  color: var(--navy);
+}
+
+/* =========================================================
+   COMMON INPUT STYLE
+========================================================= */
+
+.login-input,
+.register-input,
+.forgot-input,
+.expense-input,
+.search-box {
+  background: rgba(255, 255, 255, 0.98);
+  color: var(--text);
+
+  border: 1px solid var(--border);
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+.login-input:hover,
+.register-input:hover,
+.forgot-input:hover,
+.expense-input:hover,
+.search-box:hover {
+  border-color: var(--dark);
+}
+
+.login-input:focus,
+.register-input:focus,
+.forgot-input:focus,
+.expense-input:focus,
+.search-box:focus {
+  border-color: var(--primary);
+
+  outline: none;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.10),
+    0 0 15px rgba(37, 99, 235, 0.15);
+
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   COMMON BLUE BUTTON
+========================================================= */
+
+.login-btn,
+.register-btn,
+.forgot-btn,
+.expense-button,
+.button-section button,
+.profile-btn {
+  background: var(--primary);
+  color: #ffffff;
+
+  border: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.login-btn:hover,
+.register-btn:hover,
+.forgot-btn:hover,
+.expense-button:hover,
+.button-section button:hover,
+.profile-btn:hover {
+  background: var(--primary-dark);
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+/* =========================================================
+   ANIMATED BUTTON SHINE
+========================================================= */
+
+.login-btn,
+.register-btn,
+.forgot-btn,
+.expense-button,
+.profile-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.login-btn::after,
+.register-btn::after,
+.forgot-btn::after,
+.expense-button::after,
+.profile-btn::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 70%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.30),
+    transparent
+  );
+
+  transform: skewX(-25deg);
+}
+
+.login-btn:hover::after,
+.register-btn:hover::after,
+.forgot-btn:hover::after,
+.expense-button:hover::after,
+.profile-btn:hover::after {
+  animation: buttonShine 0.8s ease;
+}
+
+/* =========================================================
+   SIDEBAR
+   Keep sidebar solid
+========================================================= */
+
+.sidebar {
+  background: var(--navy);
+  color: #ffffff;
+
+  z-index: 1000;
+}
+
+/* =========================================================
+   BACK BUTTONS
+========================================================= */
+
+.back-btn {
+  background: var(--navy);
+  color: #ffffff;
+
+  border: none;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.back-btn:hover {
+  background: var(--black);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 15px rgba(15, 23, 42, 0.20);
+}
+
+/* =========================================================
+   TRANSACTION DELETE
+========================================================= */
+
+.transaction-card button:last-of-type {
+  background: var(--danger);
+  color: #ffffff;
+}
+
+.transaction-card button:last-of-type:hover {
+  background: #b91c1c;
+}
+
+/* =========================================================
+   EDIT BUTTON
+========================================================= */
+
+.transaction-card button:first-of-type {
+  background: var(--warning);
+  color: #ffffff;
+}
+
+.transaction-card button:first-of-type:hover {
+  background: #d97706;
+}
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.profile-avatar {
+  background: var(--navy);
+  color: #ffffff;
+
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.20);
+
+  animation: avatarFloat 4s ease-in-out infinite;
+}
+
+/* =========================================================
+   BACKGROUND DOT ANIMATION
+========================================================= */
+
+@keyframes backgroundDots {
+  0% {
+    background-position: 0 0;
+  }
+
+  25% {
+    background-position: 24px 12px;
+  }
+
+  50% {
+    background-position: 48px 24px;
+  }
+
+  75% {
+    background-position: 24px 36px;
+  }
+
+  100% {
+    background-position: 0 48px;
+  }
+}
+
+/* =========================================================
+   LEFT DARK CIRCLE
+========================================================= */
+
+@keyframes floatingDarkCircle {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(35px, 20px) scale(1.05);
+  }
+
+  50% {
+    transform: translate(55px, 45px) scale(1.12);
+  }
+
+  75% {
+    transform: translate(25px, 30px) scale(1.06);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* =========================================================
+   RIGHT DARK CIRCLE
+========================================================= */
+
+@keyframes floatingNavyCircle {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(-25px, -20px) scale(1.05);
+  }
+
+  50% {
+    transform: translate(-50px, -40px) scale(1.10);
+  }
+
+  75% {
+    transform: translate(-30px, -20px) scale(1.05);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* =========================================================
+   BUTTON SHINE
+========================================================= */
+
+@keyframes buttonShine {
+  0% {
+    left: -120%;
+  }
+
+  100% {
+    left: 130%;
+  }
+}
+
+/* =========================================================
+   AVATAR ANIMATION
+========================================================= */
+
+@keyframes avatarFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .login-container,
+  .register-container,
+  .forgot-container,
+  .dashboard-container,
+  .expense-container,
+  .transactions-container,
+  .analytics-container,
+  .profile-container {
+    min-height: 100vh;
+  }
+
+  .login-container::before,
+  .register-container::before,
+  .forgot-container::before,
+  .dashboard-container::before,
+  .expense-container::before,
+  .transactions-container::before,
+  .analytics-container::before,
+  .profile-container::before {
+    width: 300px;
+    height: 300px;
+    top: -150px;
+    left: -120px;
+  }
+
+  .login-container::after,
+  .register-container::after,
+  .forgot-container::after,
+  .dashboard-container::after,
+  .expense-container::after,
+  .transactions-container::after,
+  .analytics-container::after,
+  .profile-container::after {
+    width: 260px;
+    height: 260px;
+    right: -120px;
+    bottom: -120px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .login-container,
+  .register-container,
+  .forgot-container,
+  .dashboard-container,
+  .expense-container,
+  .transactions-container,
+  .analytics-container,
+  .profile-container {
+    width: 100%;
+    min-height: 100vh;
+
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .login-container::before,
+  .register-container::before,
+  .forgot-container::before,
+  .dashboard-container::before,
+  .expense-container::before,
+  .transactions-container::before,
+  .analytics-container::before,
+  .profile-container::before {
+    width: 220px;
+    height: 220px;
+
+    top: -100px;
+    left: -90px;
+  }
+
+  .login-container::after,
+  .register-container::after,
+  .forgot-container::after,
+  .dashboard-container::after,
+  .expense-container::after,
+  .transactions-container::after,
+  .analytics-container::after,
+  .profile-container::after {
+    width: 200px;
+    height: 200px;
+
+    right: -90px;
+    bottom: -90px;
+  }
+}

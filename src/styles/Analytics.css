@@ -1,0 +1,541 @@
+/* =========================================================
+   ANALYTICS PAGE
+========================================================= */
+
+.analytics-container {
+  min-height: 100vh;
+  width: 100%;
+
+  background: transparent;
+
+  padding: 35px;
+
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.analytics-title {
+  text-align: center;
+
+  color: var(--navy);
+
+  font-size: 32px;
+
+  margin-bottom: 35px;
+}
+
+/* =========================================================
+   SUMMARY CARDS
+========================================================= */
+
+.summary-cards {
+  display: flex;
+
+  gap: 25px;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 40px;
+}
+
+.card {
+  width: 250px;
+
+  padding: 25px;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+
+  text-align: center;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 14px 30px rgba(15, 23, 42, 0.15);
+}
+
+.summary-icon {
+  font-size: 30px;
+
+  margin-bottom: 10px;
+
+  animation: summaryFloat 3s ease-in-out infinite;
+}
+
+.card h3 {
+  color: var(--text-secondary);
+
+  margin-bottom: 12px;
+
+  font-size: 16px;
+}
+
+.card p {
+  font-size: 27px;
+
+  color: var(--text);
+
+  font-weight: bold;
+
+  margin: 0;
+}
+
+.positive-value {
+  color: var(--success) !important;
+}
+
+.negative-value {
+  color: var(--danger) !important;
+}
+
+/* =========================================================
+   CHART SECTION
+========================================================= */
+
+.chart-section {
+  display: flex;
+
+  gap: 30px;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  margin-bottom: 45px;
+}
+
+.chart-card {
+  flex: 1;
+
+  min-width: 400px;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  padding: 25px;
+
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.chart-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.13);
+}
+
+.chart-card h2 {
+  text-align: center;
+
+  color: var(--navy);
+
+  margin-bottom: 20px;
+}
+
+/* =========================================================
+   EMPTY CHART STATE
+========================================================= */
+
+.no-chart-data {
+  height: 300px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: var(--text-secondary);
+
+  font-size: 40px;
+}
+
+.no-chart-data p {
+  font-size: 15px;
+
+  margin-top: 10px;
+}
+
+/* =========================================================
+   INSIGHTS TITLE
+========================================================= */
+
+.insights-title {
+  text-align: center;
+
+  margin-bottom: 25px;
+}
+
+.insights-title h2 {
+  color: var(--navy);
+
+  font-size: 27px;
+
+  margin-bottom: 8px;
+}
+
+.insights-title p {
+  color: var(--text-secondary);
+
+  font-size: 14px;
+
+  margin: 0;
+}
+
+/* =========================================================
+   INSIGHTS GRID
+========================================================= */
+
+.insights-grid {
+  width: 100%;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(300px, 1fr));
+
+  gap: 22px;
+}
+
+/* =========================================================
+   INSIGHT BOX
+========================================================= */
+
+.insight-box {
+  display: flex;
+
+  gap: 18px;
+
+  align-items: flex-start;
+
+  padding: 24px;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  border-radius: 18px;
+
+  border: 1px solid
+    rgba(203, 213, 225, 0.75);
+
+  box-shadow:
+    0 8px 24px rgba(15, 23, 42, 0.07);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+
+  animation: insightAppear 0.6s ease-out;
+}
+
+.insight-box:hover {
+  transform: translateY(-5px);
+
+  border-color:
+    rgba(37, 99, 235, 0.30);
+
+  box-shadow:
+    0 14px 30px rgba(15, 23, 42, 0.13);
+}
+
+/* =========================================================
+   INSIGHT ICON
+========================================================= */
+
+.insight-icon {
+  width: 55px;
+
+  height: 55px;
+
+  min-width: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #f1f5f9;
+
+  border-radius: 15px;
+
+  font-size: 27px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.insight-box:hover .insight-icon {
+  transform:
+    scale(1.1)
+    rotate(-4deg);
+}
+
+/* =========================================================
+   INSIGHT CONTENT
+========================================================= */
+
+.insight-content {
+  flex: 1;
+}
+
+.insight-content h3 {
+  color: var(--text-secondary);
+
+  font-size: 14px;
+
+  margin: 0 0 8px;
+
+  font-weight: 600;
+}
+
+.insight-content h4 {
+  color: var(--navy);
+
+  font-size: 21px;
+
+  margin: 0 0 8px;
+}
+
+.insight-content p {
+  color: var(--text-secondary);
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  margin: 0;
+}
+
+.insight-content strong {
+  color: var(--text);
+}
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.progress-container {
+  width: 100%;
+
+  height: 8px;
+
+  background: #e2e8f0;
+
+  border-radius: 20px;
+
+  margin-top: 15px;
+
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+
+  background: var(--primary);
+
+  border-radius: 20px;
+
+  transition:
+    width 1s ease;
+}
+
+.progress-warning {
+  background: var(--warning);
+}
+
+.progress-danger {
+  background: var(--danger);
+}
+
+.percentage-text {
+  display: block;
+
+  color: var(--text-secondary);
+
+  font-size: 12px;
+
+  margin-top: 7px;
+}
+
+/* =========================================================
+   RECOMMENDATION
+========================================================= */
+
+.recommendation-text {
+  margin-top: 8px !important;
+
+  line-height: 1.7 !important;
+
+  color: var(--text) !important;
+}
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-btn {
+  display: block;
+
+  width: 250px;
+
+  margin: 40px auto 10px;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: var(--radius);
+
+  background: var(--navy);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #000000;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 18px rgba(15, 23, 42, 0.20);
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes summaryFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes insightAppear {
+  from {
+    opacity: 0;
+
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .analytics-container {
+    padding: 30px 20px;
+  }
+
+  .chart-card {
+    min-width: 100%;
+  }
+
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .analytics-container {
+    padding: 25px 15px;
+  }
+
+  .analytics-title {
+    font-size: 27px;
+  }
+
+  .summary-cards {
+    gap: 15px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .chart-card {
+    min-width: 100%;
+
+    padding: 18px;
+  }
+
+  .insight-box {
+    padding: 20px;
+
+    gap: 13px;
+  }
+
+  .insight-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+
+    font-size: 23px;
+  }
+
+  .insights-title h2 {
+    font-size: 24px;
+  }
+
+  .back-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}

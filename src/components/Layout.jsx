@@ -1,23 +1,16 @@
-
 import Sidebar from "./Sidebar";
+import "../styles/Layout.css";
 
 function Layout({ children }) {
   return (
-    <div style={{ display: "flex" }}>
+    <div className="app-layout">
       <Sidebar />
 
-      <div
-        style={{
-          marginLeft: "240px",
-          width: "100%",
-          padding: "20px",
-        }}
-      >
+      <main className="main-content">
         {children}
-      </div>
+      </main>
     </div>
   );
 }
 
 export default Layout;
-

@@ -1,124 +1,404 @@
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
 .sidebar {
   width: 240px;
   height: 100vh;
-  background: var(--navy);
-  color: white;
-  position: fixed;
-  left: 0;
-  top: 0;
-  padding: 25px 20px;
-  box-sizing: border-box;
-  box-shadow: var(--shadow);
-}
 
-/* Logo */
-.logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+
   display: flex;
   flex-direction: column;
+
+  background: var(--navy);
+  color: white;
+
+  padding: 25px 20px;
+
+  box-sizing: border-box;
+
+  z-index: 1000;
+
+  box-shadow: 4px 0 20px rgba(15, 23, 42, 0.15);
+
+  transition:
+    width 0.3s ease,
+    padding 0.3s ease;
+}
+
+/* =========================================================
+   COLLAPSED SIDEBAR
+========================================================= */
+
+.sidebar-collapsed {
+  width: 78px;
+  padding: 20px 10px;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.sidebar-header {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 40px;
-  color: white;
+
+  gap: 8px;
+
   text-align: center;
 }
 
+/* Expanded wallet */
 .wallet-logo {
   width: 65px;
   height: 65px;
-  animation: walletFloat 3s ease-in-out infinite;
-  transition: transform 0.3s ease;
+
+  flex-shrink: 0;
+
+  transition:
+    width 0.3s ease,
+    height 0.3s ease,
+    transform 0.3s ease;
 }
 
 .wallet-logo:hover {
   transform: scale(1.08) rotate(-3deg);
 }
 
-.logo span {
-  font-size: 20px;
+/* Expanded text */
+.logo-text {
+  display: block;
+
+  color: white;
+
+  font-size: 19px;
+
   font-weight: bold;
-  letter-spacing: 0.5px;
+
+  line-height: 1.2;
+
+  white-space: nowrap;
+
+  transition: opacity 0.2s ease;
 }
 
-@keyframes walletFloat {
-  0% {
-    transform: translateY(0);
-  }
+/* =========================================================
+   COLLAPSED LOGO
+========================================================= */
 
-  50% {
-    transform: translateY(-4px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
+.sidebar-collapsed .wallet-logo {
+  width: 42px;
+  height: 42px;
 }
 
-.logo span {
-  letter-spacing: 0.5px;
+.sidebar-collapsed .logo-text {
+  display: none;
 }
 
-/* Small Logo Animation */
-@keyframes logoFloat {
-  0% {
-    transform: translateY(0);
-  }
+/* =========================================================
+   COLLAPSE BUTTON
+========================================================= */
 
-  50% {
-    transform: translateY(-4px);
-  }
+.collapse-btn {
+  position: absolute;
 
-  100% {
-    transform: translateY(0);
-  }
-}
-/* Navigation Links */
-.nav-link {
+  right: -2px;
+  top: 15px;
+
+  width: 32px;
+  height: 32px;
+
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+
+  border: none;
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.10);
+
+  color: white;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.collapse-btn:hover {
+  background: var(--primary);
+  transform: scale(1.05);
+}
+
+/* Collapsed button */
+.sidebar-collapsed .collapse-btn {
+  right: 50%;
+  top: -2px;
+
+  transform: translateX(50%);
+}
+
+.sidebar-collapsed .collapse-btn:hover {
+  transform: translateX(50%) scale(1.05);
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.sidebar-nav {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.nav-link {
+  width: 100%;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 0 14px;
+
+  box-sizing: border-box;
+
+  border-radius: 12px;
+
   text-decoration: none;
+
   color: #e2e8f0;
-  padding: 14px 16px;
-  margin-bottom: 12px;
-  border-radius: var(--radius);
-  font-size: 16px;
+
+  font-size: 15px;
   font-weight: 500;
-  transition: all 0.3s ease;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .nav-link:hover {
-  background: var(--primary);
+  background: rgba(255, 255, 255, 0.10);
+
   color: white;
-  transform: translateX(5px);
+
+  transform: translateX(4px);
 }
 
 .nav-link.active {
   background: white;
+
   color: var(--primary);
+
   font-weight: bold;
 }
 
-/* Logout */
-.logout {
-  margin-top: 40px;
+/* =========================================================
+   NAV ICON
+========================================================= */
+
+.nav-icon {
+  width: 20px;
+  min-width: 20px;
+
+  font-size: 18px;
+}
+
+/* =========================================================
+   COLLAPSED NAV
+========================================================= */
+
+.sidebar-collapsed .nav-link {
+  width: 52px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 0;
+
+  justify-content: center;
+
+  gap: 0;
+}
+
+.sidebar-collapsed .nav-link:hover {
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   TOOLTIP
+========================================================= */
+
+.tooltip {
+  position: absolute;
+
+  left: 68px;
+  top: 50%;
+
+  transform:
+    translateY(-50%)
+    translateX(-5px);
+
+  padding: 8px 12px;
+
+  background: #111827;
+
+  color: white;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.20);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.sidebar-collapsed .nav-link:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+
+  transform:
+    translateY(-50%)
+    translateX(0);
+}
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.sidebar-bottom {
+  width: 100%;
+
+  margin-top: auto;
+
+  padding-top: 20px;
 }
 
 .logout-btn {
   width: 100%;
-  padding: 12px;
-  margin-top: 20px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 0 14px;
+
   border: none;
-  border-radius: var(--radius);
+  border-radius: 12px;
+
   background: var(--danger);
+
   color: white;
+
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 600;
+
   cursor: pointer;
-  transition: all 0.3s ease;
+
+  position: relative;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
 .logout-btn:hover {
   background: #b91c1c;
-  transform: translateY(-2px);
+
+  transform: translateX(4px);
+}
+
+/* Collapsed logout */
+.sidebar-collapsed .logout-btn {
+  width: 52px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 0;
+
+  justify-content: center;
+
+  gap: 0;
+}
+
+.sidebar-collapsed .logout-btn:hover {
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .sidebar {
+    width: 230px;
+
+    padding: 20px 15px;
+  }
+
+  .sidebar-collapsed {
+    width: 70px;
+
+    padding: 18px 8px;
+  }
+
+  .wallet-logo {
+    width: 58px;
+    height: 58px;
+  }
+
+  .sidebar-collapsed .wallet-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
 }

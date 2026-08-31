@@ -10,6 +10,7 @@ import {
   FaSignOutAlt,
   FaBars,
   FaChevronLeft,
+  FaExchangeAlt,
 } from "react-icons/fa";
 
 import "../styles/Sidebar.css";
@@ -18,6 +19,15 @@ function Sidebar() {
   const navigate = useNavigate();
 
   const [collapsed, setCollapsed] = useState(false);
+  const [showAccounts, setShowAccounts] = useState(false);
+
+  const currentUser = JSON.parse(
+    localStorage.getItem("user") || "null"
+  );
+
+  const savedAccounts = JSON.parse(
+    localStorage.getItem("savedAccounts") || "[]"
+  );
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -25,6 +35,25 @@ function Sidebar() {
 
     alert("Logged out successfully!");
 
+    navigate("/");
+  };
+
+  const handleSwitchAccount = () => {
+    setShowAccounts(!showAccounts);
+  };
+
+  const handleSelectAccount = (account) => {
+    // Remove current authentication
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    // Store selected account temporarily
+    localStorage.setItem(
+      "switchingAccount",
+      JSON.stringify(account)
+    );
+
+    // Go to login for secure re-authentication
     navigate("/");
   };
 
@@ -103,6 +132,101 @@ function Sidebar() {
         </button>
 
       </div>
+
+      {/* =========================
+          CURRENT ACCOUNT
+      ========================= */}
+
+      {!collapsed && currentUser && (
+        <div className="account-section">
+
+          <button
+            className="account-button"
+            onClick={handleSwitchAccount}
+          >
+            <div className="account-avatar">
+              {currentUser.name
+                ?.charAt(0)
+                .toUpperCase()}
+            </div>
+
+            <div className="account-info">
+              <strong>
+                {currentUser.name}
+              </strong>
+
+              <span>
+                Switch Account
+              </span>
+            </div>
+
+            <FaExchangeAlt className="switch-icon" />
+          </button>
+
+          {showAccounts && (
+            <div className="account-dropdown">
+
+              <div className="dropdown-title">
+                Switch Account
+              </div>
+
+              {savedAccounts.length > 0 ? (
+                savedAccounts.map(
+                  (account) => (
+                    <button
+                      key={account.id}
+                      className="saved-account"
+                      onClick={() =>
+                        handleSelectAccount(
+                          account
+                        )
+                      }
+                    >
+                      <div className="saved-avatar">
+                        {account.name
+                          ?.charAt(0)
+                          .toUpperCase()}
+                      </div>
+
+                      <div>
+                        <strong>
+                          {account.name}
+                        </strong>
+
+                        <span>
+                          {account.email}
+                        </span>
+                      </div>
+                    </button>
+                  )
+                )
+              ) : (
+                <p className="no-accounts">
+                  No saved accounts
+                </p>
+              )}
+
+              <button
+                className="add-account-btn"
+                onClick={() => {
+                  localStorage.removeItem(
+                    "token"
+                  );
+                  localStorage.removeItem(
+                    "user"
+                  );
+
+                  navigate("/register");
+                }}
+              >
+                + Add Account
+              </button>
+
+            </div>
+          )}
+
+        </div>
+      )}
 
       {/* =========================
           NAVIGATION

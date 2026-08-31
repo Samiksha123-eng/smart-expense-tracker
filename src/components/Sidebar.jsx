@@ -11,6 +11,7 @@ import {
   FaBars,
   FaChevronLeft,
   FaExchangeAlt,
+  FaCheck,
 } from "react-icons/fa";
 
 import "../styles/Sidebar.css";
@@ -39,22 +40,43 @@ function Sidebar() {
   };
 
   const handleSwitchAccount = () => {
-    setShowAccounts(!showAccounts);
+    setShowAccounts((prev) => !prev);
   };
 
   const handleSelectAccount = (account) => {
-    // Remove current authentication
+    // Don't switch to the account that is already active.
+    if (
+      currentUser &&
+      account.email === currentUser.email
+    ) {
+      return;
+    }
+
+    // Keep savedAccounts untouched.
+    // Only clear the active authentication.
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 
-    // Store selected account temporarily
+    // Remember which account the user selected.
     localStorage.setItem(
       "switchingAccount",
       JSON.stringify(account)
     );
 
-    // Go to login for secure re-authentication
+    setShowAccounts(false);
+
+    // Go to login for secure re-authentication.
     navigate("/");
+  };
+
+  const handleAddAccount = () => {
+    // Clear active session, but DON'T clear saved accounts.
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    localStorage.removeItem("switchingAccount");
+
+    navigate("/register");
   };
 
   return (
@@ -63,7 +85,6 @@ function Sidebar() {
         collapsed ? "sidebar-collapsed" : ""
       }`}
     >
-
       {/* =========================
           HEADER
       ========================= */}
@@ -116,7 +137,7 @@ function Sidebar() {
         <button
           className="collapse-btn"
           onClick={() =>
-            setCollapsed(!collapsed)
+            setCollapsed((prev) => !prev)
           }
           title={
             collapsed
@@ -134,7 +155,7 @@ function Sidebar() {
       </div>
 
       {/* =========================
-          CURRENT ACCOUNT
+          ACCOUNT SWITCHER
       ========================= */}
 
       {!collapsed && currentUser && (
@@ -171,11 +192,22 @@ function Sidebar() {
               </div>
 
               {savedAccounts.length > 0 ? (
-                savedAccounts.map(
-                  (account) => (
+                savedAccounts.map((account) => {
+                  const isCurrent =
+                    currentUser.email ===
+                    account.email;
+
+                  return (
                     <button
-                      key={account.id}
-                      className="saved-account"
+                      key={
+                        account.id ||
+                        account.email
+                      }
+                      className={`saved-account ${
+                        isCurrent
+                          ? "current-account"
+                          : ""
+                      }`}
                       onClick={() =>
                         handleSelectAccount(
                           account
@@ -188,7 +220,8 @@ function Sidebar() {
                           .toUpperCase()}
                       </div>
 
-                      <div>
+                      <div className="saved-account-info">
+
                         <strong>
                           {account.name}
                         </strong>
@@ -196,10 +229,22 @@ function Sidebar() {
                         <span>
                           {account.email}
                         </span>
+
+                        {isCurrent && (
+                          <small>
+                            Current account
+                          </small>
+                        )}
+
                       </div>
+
+                      {isCurrent && (
+                        <FaCheck className="current-check" />
+                      )}
+
                     </button>
-                  )
-                )
+                  );
+                })
               ) : (
                 <p className="no-accounts">
                   No saved accounts
@@ -208,18 +253,9 @@ function Sidebar() {
 
               <button
                 className="add-account-btn"
-                onClick={() => {
-                  localStorage.removeItem(
-                    "token"
-                  );
-                  localStorage.removeItem(
-                    "user"
-                  );
-
-                  navigate("/register");
-                }}
+                onClick={handleAddAccount}
               >
-                + Add Account
+                ＋ Add Account
               </button>
 
             </div>

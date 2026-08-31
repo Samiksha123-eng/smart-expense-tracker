@@ -23,7 +23,11 @@ router.put("/forgot-password", forgotPassword);
 // Get Logged-in User Profile
 router.get("/profile", protect, getProfile);
 
+router.put("/profile", authMiddleware, updateProfile);
+
+
 // Update Monthly Budget
 router.put("/budget", protect, updateBudget);
+
 
 module.exports = router;
